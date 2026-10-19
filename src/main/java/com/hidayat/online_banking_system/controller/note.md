@@ -1,0 +1,2 @@
+Konsep: Apa Tugas Controller?
+Controller hanya menerima request dari jaringan (HTTP), membaca format JSON, menjalankan validasi, memanggil Service, dan mengembalikan HTTP Response code (201 CREATED, 400 BAD REQUEST, dll).
