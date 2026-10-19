@@ -19,7 +19,7 @@ public class RegisterUserRequest {
     private String email;
     
     @NotBlank (message="Password tidak boleh kosong")
-    @Size(message="Format password tidak valid")
+    @Size(min = 6, message="Format password tidak valid")
     private String password;
 
     @NotBlank(message = "Nama tidak boleh kosonh")

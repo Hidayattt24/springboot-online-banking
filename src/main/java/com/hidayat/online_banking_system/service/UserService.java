@@ -30,7 +30,7 @@ public class UserService {
         if (userRepository.existsByEmail(request.getEmail())) {
             throw new RuntimeException("Email sudah terdaftar!");
         }
-        // 1. Buat User
+        // 1. Buat Usercoba
         User user = new User();
         user.setUsername(request.getUsername());
         user.setEmail(request.getEmail());

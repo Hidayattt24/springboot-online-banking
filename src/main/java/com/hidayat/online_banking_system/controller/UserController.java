@@ -1,6 +1,7 @@
 package com.hidayat.online_banking_system.controller;
 
 import com.hidayat.online_banking_system.dto.RegisterUserRequest;
+import com.hidayat.online_banking_system.dto.RegisterUserResponse;
 import com.hidayat.online_banking_system.entity.Account;
 import com.hidayat.online_banking_system.service.UserService;
 import jakarta.validation.Valid;
@@ -18,7 +19,15 @@ public class UserController {
     public ResponseEntity<?> register(@Valid @RequestBody RegisterUserRequest request) {
         try {
             Account account = userService.registerUser(request);
-            return ResponseEntity.status(HttpStatus.CREATED).body(account);
+            RegisterUserResponse response =new RegisterUserResponse(
+                account.getUser().getId(),
+                account.getUser().getUsername(),
+                account.getUser().getEmail(),
+                account.getUser().getFullName(),
+                account.getAccountNumber(),
+                account.getBalance()
+            );
+            return ResponseEntity.status(HttpStatus.CREATED).body(response);
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
